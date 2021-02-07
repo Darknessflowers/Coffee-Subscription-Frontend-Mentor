@@ -160,6 +160,10 @@ footer .social svg {
   color: var(--light-cream-bg);
 }
 
+#home-hero p {
+  color: rgba(254, 252, 247, 0.8);
+}
+
 #home-hero picture {
   grid-column: 1/-1;
   grid-row: 1/-1;
@@ -206,6 +210,7 @@ footer .social svg {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-background-clip: text;
+  background-clip: text;
   -moz-text-fill-color: transparent;
   text-transform: lowercase;
   font-size: 150px;
@@ -254,9 +259,10 @@ footer .social svg {
   text-align: center;
   /* margin-top: 85px; */
   max-width: 1110px;
-  margin: 85px auto;
-  transform: translateY(-228px);
-  margin-bottom: -200px;
+  margin: 85px auto 0;
+  /* transform: translateY(-228px); */
+  margin-top: -228px;
+  margin-bottom: 200px;
 }
 
 .choose-bg {
@@ -326,7 +332,8 @@ footer .social svg {
   position: absolute;
   display: block;
   height: 1px;
-  width: 763px;
+  /* width: 763px; */
+  width: 73%;
   background: var(--pale-orange);
   content: "";
   top: 15px;
@@ -350,6 +357,9 @@ footer .social svg {
     padding: 0 40px;
   }
 
+  button {
+    padding: 21px 30px;
+  }
   .coffeewrap,
   #choose-boxes {
     grid-template-columns: 1fr;
@@ -389,5 +399,99 @@ footer .social svg {
   #our-collection h2 {
     font-size: 96px;
     line-height: 96px;
+  }
+
+  .choose-bg {
+    padding: 66px 0 294px 0;
+    min-height: 573px;
+  }
+
+  #choose-boxes {
+    margin-top: -280px;
+    margin-bottom: 200px;
+  }
+
+  footer {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+    grid-row-gap: 33px;
+  }
+
+  footer .logo {
+    margin-right: 0;
+  }
+
+  footer nav a {
+    margin: 0 32px;
+  }
+
+  .social {
+    margin-left: unset;
+    margin-top: 33px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    padding: 0 23px;
+  }
+
+  #how-it-works {
+    grid-template-columns: 1fr;
+  }
+
+  #line-with-dots {
+    display: none;
+  }
+
+  #choose-boxes {
+    margin-top: -587px;
+  }
+
+  #choose-boxes .box {
+    grid-template-columns: 1fr;
+    padding: 66px 35px 48px 35px;
+  }
+
+  #choose-boxes .box .content-box {
+    text-align: center;
+  }
+
+  .choose-bg {
+    padding: 66px 25px 294px 25px;
+    min-height: 900px;
+  }
+
+  #our-collection h2 {
+    font-size: 40px;
+    line-height: 72px;
+  }
+
+  #our-collection h2 {
+    background-image: linear-gradient(180deg, #a6a9ac 0%, #d7d8d6 100%);
+    transform: unset;
+  }
+
+  #home-hero h1 {
+    margin-bottom: 27px;
+    font-size: 40px;
+    line-height: 40px;
+    text-align: center;
+  }
+
+  .caption {
+    padding-left: 0;
+    max-width: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 22px;
+  }
+
+  #home-hero p {
+    font-size: 15px;
+    line-height: 25px;
+    text-align: center;
   }
 }
