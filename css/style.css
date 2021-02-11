@@ -199,6 +199,21 @@
 }
 
 @media only screen and (max-width: 1029px) {
+  #home-hero h1 {
+    margin-bottom: 24px;
+    font-size: 48px;
+    line-height: 48px;
+  }
+  #home-hero p {
+    font-size: 15px;
+    line-height: 25px;
+  }
+  #home-hero .caption {
+    padding-left: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
   #our-collection h2 {
     font-size: 96px;
     line-height: 96px;
@@ -276,13 +291,145 @@
     text-align: center;
   }
   #home-hero .caption {
-    padding-left: 0;
     max-width: unset;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0px 22px;
   }
+}
+
+#how-it-works.plan {
+  background: #333d4b;
+  max-width: none;
+  padding: 100px 150px 100px 85px;
+}
+
+#how-it-works.plan h3 {
+  color: #fff;
+}
+
+#how-it-works.plan p {
+  color: #fefcf7;
+}
+
+#how-it-works.plan #line-with-dots .dot {
+  background: transparent;
+}
+
+#how-it-works.plan #line-with-dots::before {
+  left: 15px;
+}
+
+.sub-menu ul {
+  list-style-type: none;
+  font-family: "Fraunces", serif;
+}
+
+.sub-menu li {
+  padding: 30px 0;
+  border-bottom: 1px solid rgba(131, 136, 143, 0.25);
+  font-weight: 800;
+  font-size: 24px;
+  color: rgba(51, 61, 75, 0.4);
+  cursor: pointer;
+}
+
+.sub-menu li.active {
+  color: #333d4b;
+}
+
+.sub-menu li:first-child {
+  padding-top: 0;
+}
+
+.sub-menu li:last-child {
+  border-bottom: none;
+}
+
+.sub-menu .num {
+  font-weight: 400;
+  color: rgba(131, 136, 143, 0.4);
+}
+
+.sub-menu li.active .num {
+  color: #0e8784;
+}
+
+.subscription {
+  max-width: 1110px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 255px auto;
+  grid-gap: 125px;
+}
+
+.accordion {
+  width: 100%;
+  text-align: left;
+  padding: 0 0 21px 0;
+  border-radius: 0;
+  font-size: 40px;
+  background: transparent;
+  color: #83888f;
+  display: flex;
+  align-items: center;
+}
+
+.accordion:hover {
+  background: transparent;
+  color: #83888f;
+}
+
+.accordion::after {
+  content: url("../assets/plan/desktop/icon-arrow.svg");
+  display: block;
+  width: 18px;
+  height: 12px;
+  margin-left: auto;
+}
+
+.accordion.active::after {
+  transform: rotate(180deg);
+}
+
+.accordion.disabled {
+  cursor: not-allowed;
+}
+
+.panel {
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 23px;
+  display: none;
+  overflow: hidden;
+}
+
+.panel.active {
+  display: grid;
+}
+
+.option {
+  background: #f4f1eb;
+  padding: 37px 28px 90px 28px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.option.selected {
+  background: #0e8784;
+}
+
+.option.selected h4,
+.option.selected p {
+  color: #fefcf7;
+}
+
+.option h4 {
+  margin-bottom: 30px;
+}
+
+.accordian-wrap {
+  margin-bottom: 100px;
 }
 
 * {
@@ -386,7 +533,6 @@ header.activated {
   height: 100vh;
   position: fixed;
   background: linear-gradient(#fefcf7, #fefcf7 50%, transparent);
-  padding: 0 23px;
   left: 0;
 }
 
@@ -407,7 +553,8 @@ header .menu-toggle.activated::before {
 header .container {
   display: flex;
   justify-content: space-between;
-  padding: 50px 0;
+  padding-top: 50px;
+  padding-bottom: 50px;
   flex-wrap: wrap;
   align-items: center;
 }
@@ -450,8 +597,56 @@ footer .social-img:hover path {
   fill: #fdd6ba;
 }
 
+#plan-hero,
+#about-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  margin-bottom: 168px;
+}
+
+#plan-hero h1,
+#about-hero h1 {
+  margin-bottom: 40px;
+}
+
+#plan-hero h1,
+#plan-hero p,
+#about-hero h1,
+#about-hero p {
+  color: #fefcf7;
+}
+
+#plan-hero p,
+#about-hero p {
+  color: rgba(254, 252, 247, 0.8);
+}
+
+#plan-hero picture,
+#about-hero picture {
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+  max-width: 100%;
+}
+
+#plan-hero img,
+#about-hero img {
+  border-radius: 10px;
+  max-width: 100%;
+}
+
+#plan-hero .caption,
+#about-hero .caption {
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+  max-width: 50%;
+  padding-left: 84px;
+  max-width: calc(495px + 84px);
+}
+
 @media only screen and (max-width: 1280px) {
-  body {
+  .container {
     padding: 0 40px;
   }
 }
@@ -479,7 +674,7 @@ footer .social-img:hover path {
 }
 
 @media only screen and (max-width: 705px) {
-  body {
+  .container {
     padding: 0 23px;
   }
   header .menu-toggle {
@@ -490,6 +685,7 @@ footer .social-img:hover path {
   }
   header nav.activated {
     display: block;
+    margin-top: 88px;
   }
   header nav li {
     width: 100%;

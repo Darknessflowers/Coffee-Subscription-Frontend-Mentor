@@ -200,6 +200,27 @@
 }
 
 @media only screen and (max-width: 1029px) {
+  #home-hero {
+    h1 {
+      margin-bottom: 24px;
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 25px;
+    }
+
+    .caption {
+      padding-left: 60px;
+      // max-width: unset;
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+    }
+  }
+
   #our-collection {
     h2 {
       font-size: 96px;
@@ -300,7 +321,6 @@
     }
 
     .caption {
-      padding-left: 0;
       max-width: unset;
       display: flex;
       flex-direction: column;

@@ -1,8 +1,8 @@
 let navButton = document.querySelector('.menu-toggle');
 let nav = document.querySelector('header nav');
 let header = document.querySelector('header');
-let homeHero = document.querySelector('#home-hero');
-const mediaQuery = window.matchMedia('(max-width: 600px)');
+let homeHero = document.querySelector('.hero');
+const mediaQuery = window.matchMedia('(max-width: 705px)');
 
 function closeMenu() {
   navButton.classList.remove('activated');

@@ -1,0 +1,135 @@
+#how-it-works.plan {
+  background: $dark-grey-blue;
+  max-width: none;
+  padding: 100px 150px 100px 85px;
+
+  h3 {
+    color: #fff;
+  }
+
+  p {
+    color: $light-cream-bg;
+  }
+
+  #line-with-dots {
+    .dot {
+      background: transparent;
+    }
+
+    &::before {
+      left: 15px;
+    }
+  }
+}
+
+.sub-menu {
+  ul {
+    list-style-type: none;
+    font-family: $font-heading;
+  }
+
+  li {
+    padding: 30px 0;
+    border-bottom: 1px solid adjust-color($grey, $alpha: -0.75);
+    font-weight: 800;
+    font-size: 24px;
+    color: adjust-color($dark-grey-blue, $alpha: -0.6);
+    cursor: pointer;
+  }
+
+  li.active {
+    color: $dark-grey-blue;
+  }
+
+  li:first-child {
+    padding-top: 0;
+  }
+
+  li:last-child {
+    border-bottom: none;
+  }
+
+  .num {
+    font-weight: 400;
+    color: adjust-color($grey, $alpha: -0.6);
+  }
+
+  li.active .num {
+    color: $dark-cyan;
+  }
+}
+
+.subscription {
+  max-width: 1110px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 255px auto;
+  grid-gap: 125px;
+}
+
+.accordion {
+  width: 100%;
+  text-align: left;
+  padding: 0 0 21px 0;
+  border-radius: 0;
+  font-size: 40px;
+  background: transparent;
+  color: $grey;
+  display: flex;
+  align-items: center;
+  &:hover {
+    background: transparent;
+    color: $grey;
+  }
+
+  &::after {
+    content: url("../assets/plan/desktop/icon-arrow.svg");
+    // background: url("../assets/plan/desktop/icon-arrow.svg");
+    display: block;
+    width: 18px;
+    height: 12px;
+    margin-left: auto;
+  }
+
+  &.active::after {
+    transform: rotate(180deg);
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+  }
+}
+
+.panel {
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 23px;
+  display: none;
+  overflow: hidden;
+
+  &.active {
+    display: grid;
+  }
+}
+
+.option {
+  background: #f4f1eb;
+  padding: 37px 28px 90px 28px;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &.selected {
+    background: $dark-cyan;
+    h4,
+    p {
+      color: $light-cream-bg;
+    }
+  }
+
+  h4 {
+    margin-bottom: 30px;
+  }
+}
+
+.accordian-wrap {
+  margin-bottom: 100px;
+}

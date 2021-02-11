@@ -106,7 +106,7 @@ header {
     height: 100vh;
     position: fixed;
     background: linear-gradient(#fefcf7, #fefcf7 50%, transparent);
-    padding: 0 23px;
+    // padding: 0 23px;
     left: 0;
   }
   .menu-toggle {
@@ -126,7 +126,8 @@ header {
   .container {
     display: flex;
     justify-content: space-between;
-    padding: 50px 0;
+    padding-top: 50px;
+    padding-bottom: 50px;
     flex-wrap: wrap;
     align-items: center;
   }
@@ -172,8 +173,49 @@ footer {
     }
   }
 }
+
+#plan-hero,
+#about-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  align-items: center;
+  margin-bottom: 168px;
+
+  h1 {
+    margin-bottom: 40px;
+  }
+
+  h1,
+  p {
+    color: $light-cream-bg;
+  }
+
+  p {
+    color: rgba(254, 252, 247, 0.8);
+  }
+
+  picture {
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+    max-width: 100%;
+  }
+
+  img {
+    border-radius: 10px;
+    max-width: 100%;
+  }
+
+  .caption {
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+    max-width: 50%;
+    padding-left: 84px;
+    max-width: calc(495px + 84px);
+  }
+}
 @media only screen and (max-width: 1280px) {
-  body {
+  .container {
     padding: 0 40px;
   }
 }
@@ -204,7 +246,7 @@ footer {
 }
 
 @media only screen and (max-width: 705px) {
-  body {
+  .container {
     padding: 0 23px;
   }
 
@@ -217,6 +259,7 @@ footer {
       display: none;
       &.activated {
         display: block;
+        margin-top: 88px;
       }
 
       li {
