@@ -26,6 +26,8 @@
   ul {
     list-style-type: none;
     font-family: $font-heading;
+    position: sticky;
+    top: 80px;
   }
 
   li {
