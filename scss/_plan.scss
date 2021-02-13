@@ -135,3 +135,27 @@
 .accordian-wrap {
   margin-bottom: 100px;
 }
+
+#order-summary {
+  background: $dark-grey-blue;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  padding: 50px 64px;
+  font-size: 24px;
+  color: #fff;
+  font-family: $font-heading;
+  line-height: 40px;
+
+  h4 {
+    color: adjust-color(#fff, $alpha: -0.5);
+    font-family: $font-paragraph;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  span.blue {
+    color: $dark-cyan;
+  }
+}

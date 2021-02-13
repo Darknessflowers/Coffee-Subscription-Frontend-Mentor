@@ -150,15 +150,15 @@
         <div class="accordian-wrap" data-question="how">
           <button class="accordion active">How do you drink your coffee?</button>
           <div class="panel active">
-            <div class="option" data-question="how" data-answer="capsule">
+            <div class="option" data-question="how" data-answer="Capsules">
               <h4>Capsule</h4>
               <p>Compatible with Nespresso systems and similar brewers</p>
               </div>
-            <div class="option" data-question="how" data-answer="filter">
+            <div class="option" data-question="how" data-answer="Filter">
               <h4>Filter</h4>
               <p>For pour over or drip methods like Aeropress, Chemex, and V60</p>
               </div>
-            <div class="option selected" data-question="how" data-answer="espresso">
+            <div class="option" data-question="how" data-answer="Espresso">
               <h4>Espresso</h4>
               <p>Dense and finely ground beans for an intense, flavorful experience</p>
               </div>
@@ -202,7 +202,7 @@
       </div>
 
       <div class="accordian-wrap" data-question="grind">
-        <button class="accordion disabled">Want us to grind them?</button>
+        <button id="grind-btn" class="accordion disabled">Want us to grind them?</button>
         <div class="panel disabled">
           <div class="option" data-question="grind" data-answer="bean-grind">
             <h4>Wholebean</h4>
@@ -236,7 +236,14 @@
             </div>
         </div>
       </div>
+
+      <div id="order-summary">
+        <h4>Order Summary</h4>
+        <p class="order-text">"I drink my coffee <span class="how-fragment">using <span class="blue">Capsules</span>,</span> with a <span class="blue">_____</span> type of bean. <span class="blue">_____</span>, sent to me <span class="blue">_____</span>."</p>
       </div>
+      </div>
+
+      
     </div>
   <footer>
 

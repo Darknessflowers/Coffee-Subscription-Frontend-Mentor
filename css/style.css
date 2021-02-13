@@ -434,6 +434,30 @@
   margin-bottom: 100px;
 }
 
+#order-summary {
+  background: #333d4b;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  padding: 50px 64px;
+  font-size: 24px;
+  color: #fff;
+  font-family: "Fraunces", serif;
+  line-height: 40px;
+}
+
+#order-summary h4 {
+  color: rgba(255, 255, 255, 0.5);
+  font-family: "Barlow", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+#order-summary span.blue {
+  color: #0e8784;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;

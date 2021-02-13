@@ -1,13 +1,15 @@
 let orderSummary = {
-  "how": '',
-  "type": '',
-  "quantity": '',
-  "grind": '',
-  "frequency": '',
+  // template
+  // "how": '',
+  // "type": '',
+  // "quantity": '',
+  // "grind": '',
+  // "frequency": '',
 };
 
 let accordion = document.querySelectorAll('.accordion');
 let option = document.querySelectorAll('.option');
+let howFragment = document.querySelector('.how-fragment');
 
 function openPanel(panel) {
   if(!panel.classList.contains("disabled")) {
@@ -53,17 +55,48 @@ options.addEventListener('click', function() {
 
   // Add class of selected to item in that row
   options.classList.add('selected');
-  let selected = options.querySelector('h4').textContent;
-  console.log(options.querySelector('h4').textContent);
-  // Add to order summary object
+  let selected = options.getAttribute('data-answer');
+  console.log(options.getAttribute('data-answer'));
   // First, get the data-question
   let dataQuestion = options.getAttribute('data-question');
   console.log(dataQuestion);
+    // Add to order summary object
   orderSummary[dataQuestion] = selected;
+
+  //if in the how row
+  if(dataQuestion === 'how') {
+    console.log('selected from how row');
+    if(orderSummary.how === 'Capsules') {
+      howFragment.innerHTML = `<span class="how-fragment">using <span class="blue">${orderSummary.how}</span>,</span>`;
+      // disable grind option
+      let grindPanel = document.querySelector('#grind-btn');
+    } else {
+      if(!orderSummary.hasOwnProperty('how')) {
+        howFragment.innerHTML = `<span class="how-fragment">as <span class="blue">_____</span>,</span>`;
+      } else {
+        howFragment.innerHTML = `<span class="how-fragment">as <span class="blue">${orderSummary.how}</span>,</span>`;
+      }
+      
+    }
+  } else if(dataQuestion === 'type') {
+    console.log('selected from type row');
+  } else if(dataQuestion === 'quantity') {
+    console.log('selected from quantity row');
+  } else if(dataQuestion === 'grind') {
+    console.log('selected from grind row');
+  } else if(dataQuestion === 'frequency') {
+    console.log('selected from frequency row');
+  } else {
+    console.log('unknown row');
+  }
 });
 });
 
+// if capsule text = 'using capsules' // using ${orderSummary.how} -> disable grind
 
+//other wise 'as ${orderSummary.how}'
+
+// trigger closing of section, open next section
 
 
 // TODO:
