@@ -10,6 +10,10 @@ let orderSummary = {
 let accordion = document.querySelectorAll('.accordion');
 let option = document.querySelectorAll('.option');
 let howFragment = document.querySelector('.how-fragment');
+let typeFragment = document.querySelector('.type-fragment');
+let quantityFragment = document.querySelector('.quantity-fragment');
+let frequencyFragment = document.querySelector('.frequency-fragment');
+let grindFragment = document.querySelector('.grind-fragment');
 
 function openPanel(panel) {
   if(!panel.classList.contains("disabled")) {
@@ -37,7 +41,6 @@ for(let i=0; i < accordion.length; i++) {
     closePanel(panel);
     }
      else {
-        // if it is a disabled panel don't open it
     openPanel(panel);
     }
     // thing = $0.parentElement.parentElement.nextElementSibling.firstElementChild.nextElementSibling; <- get the button of the next section from in a panel. 
@@ -48,55 +51,81 @@ option.forEach((options) => {
   //Add event listener to all options
 options.addEventListener('click', function() {
   //Remove class of selected from others in row
-  let rowPanels = options.parentElement.querySelectorAll('.option');
-  rowPanels.forEach((rowOptions) => {
+  let rowOptions = options.parentElement.querySelectorAll('.option');
+  rowOptions.forEach((rowOptions) => {
     rowOptions.classList.remove('selected');
   });
 
   // Add class of selected to item in that row
   options.classList.add('selected');
   let selected = options.getAttribute('data-answer');
-  console.log(options.getAttribute('data-answer'));
   // First, get the data-question
   let dataQuestion = options.getAttribute('data-question');
-  console.log(dataQuestion);
     // Add to order summary object
   orderSummary[dataQuestion] = selected;
-
   //if in the how row
   if(dataQuestion === 'how') {
-    console.log('selected from how row');
+    let grindBtn = document.querySelector('#grind-btn');
     if(orderSummary.how === 'Capsules') {
-      howFragment.innerHTML = `<span class="how-fragment">using <span class="blue">${orderSummary.how}</span>,</span>`;
+      howFragment.innerHTML = `using <span class="blue">${orderSummary.how}</span>,`;
       // disable grind option
-      let grindPanel = document.querySelector('#grind-btn');
+      if(!grindBtn.classList.contains('disabled')) {
+        grindBtn.classList.add('disabled');
+        grindBtn.nextElementSibling.classList.add('disabled');
+        closePanel(grindBtn.nextElementSibling);
+      }
+      //reset grind option
+      delete orderSummary.grind;
+      grindFragment.innerHTML = ``;
+      let grindRow = document.querySelector('#grind-row');
+      let grindOptions = grindRow.querySelectorAll('.option');
+      grindOptions.forEach((option) => {
+        option.classList.remove('selected');
+      });
     } else {
       if(!orderSummary.hasOwnProperty('how')) {
-        howFragment.innerHTML = `<span class="how-fragment">as <span class="blue">_____</span>,</span>`;
+        howFragment.innerHTML = `as <span class="blue">_____</span>,`;
       } else {
-        howFragment.innerHTML = `<span class="how-fragment">as <span class="blue">${orderSummary.how}</span>,</span>`;
+        howFragment.innerHTML = `as <span class="blue">${orderSummary.how}</span>,`;
       }
-      
+      if(grindBtn.classList.contains('disabled')) {
+        grindBtn.classList.remove('disabled');
+        grindBtn.nextElementSibling.classList.remove('disabled');
+      }
     }
   } else if(dataQuestion === 'type') {
-    console.log('selected from type row');
+    typeFragment.innerHTML = orderSummary.type;
   } else if(dataQuestion === 'quantity') {
-    console.log('selected from quantity row');
+    quantityFragment.innerHTML = orderSummary.quantity;
   } else if(dataQuestion === 'grind') {
-    console.log('selected from grind row');
+    if(orderSummary.grind === 'Wholebean') {
+      grindFragment.innerHTML = ``;
+    } else {
+      grindFragment.innerHTML = ` ground ala <span class="blue">${orderSummary.grind}</span>`;
+    }
   } else if(dataQuestion === 'frequency') {
-    console.log('selected from frequency row');
+    frequencyFragment.innerHTML = orderSummary.frequency;
   } else {
     console.log('unknown row');
   }
+  // close panel that was just selected from
+  let currentPanel = this.closest('.panel'); 
+  // closePanel(currentPanel);
+
+  // move up from the button then navigate to the next panel
+  let nextPanel = this.closest('.accordian-wrap').nextElementSibling.firstElementChild.nextElementSibling;
+    // open next panel
+    if(!currentPanel.classList.contains('last')) {
+      openPanel(nextPanel);
+    }
+  // console.log(this.parentElement.parentElement.nextElementSibling.firstElementChild.nextElementSibling);
+      // thing = $0.parentElement.parentElement.nextElementSibling.firstElementChild.nextElementSibling; <- get the button of the next section from in a panel. 
 });
 });
-
-// if capsule text = 'using capsules' // using ${orderSummary.how} -> disable grind
-
-//other wise 'as ${orderSummary.how}'
 
 // trigger closing of section, open next section
+// active panel
+// anchor linking
 
 
 // TODO:
