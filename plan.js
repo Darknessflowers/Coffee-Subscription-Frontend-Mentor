@@ -6,16 +6,50 @@ let orderSummary = {
   // "grind": '',
   // "frequency": '',
 };
+let pricing = {
+  '250g': {
+    'Every Week': 7.20 * 4,
+    'Every Fortnight': 9.60 * 2,
+    'Every Month': 12.00,
+  },
+  '500g': {
+    'Every Week': 13.00 * 4,
+    'Every Fortnight': 17.50 * 2,
+    'Every Month': 22.00,
+  },
+  '1000g': {
+    'Every Week': 22.00 * 4,
+    'Every Fortnight': 32.00 * 2,
+    'Every Month': 42.00,
+  },
+};
 
-let accordion = document.querySelectorAll('.accordion');
-let option = document.querySelectorAll('.option');
-let howFragment = document.querySelector('.how-fragment');
-let typeFragment = document.querySelector('.type-fragment');
-let quantityFragment = document.querySelector('.quantity-fragment');
-let frequencyFragment = document.querySelector('.frequency-fragment');
-let grindFragment = document.querySelector('.grind-fragment');
+// calculations
+// disable menu item if panel is disabled
+// mobile adjustment for checkout popup
+
+const accordion = document.querySelectorAll('.accordion');
+const option = document.querySelectorAll('.option');
+const howFragment = document.querySelector('.how-fragment');
+const typeFragment = document.querySelector('.type-fragment');
+const quantityFragment = document.querySelector('.quantity-fragment');
+const frequencyFragment = document.querySelector('.frequency-fragment');
+const grindFragment = document.querySelector('.grind-fragment');
+const subMenuItems = document.querySelectorAll('.sub-menu li');
+const modalContainer = document.querySelector('.checkout-modal-outer');
+const modalInner = document.querySelector('.checkout-modal-inner');
+const modalOrderInner = document.querySelector('.order');
+const orderAsText = document.querySelector('.order-text');
+const priceDisplay = document.querySelector('.checkout-modal-inner .price');
+const proceedToCheckoutBtn = document.querySelector('.proceed-to-checkout');
 
 function openPanel(panel) {
+  subMenuItems.forEach((item) => {
+    if(item.getAttribute('data-question') === panel.getAttribute('data-question')) {
+      item.classList.add('active');
+      return;
+    }
+  });
   if(!panel.classList.contains("disabled")) {
     // otherwise open it
     panel.style.display = "grid";
@@ -25,6 +59,12 @@ function openPanel(panel) {
 }
 
 function closePanel(panel) {
+  subMenuItems.forEach((item) => {
+    if(item.getAttribute('data-question') === panel.getAttribute('data-question')) {
+      item.classList.remove('active');
+      return;
+    } 
+  });
   if(panel.classList.contains("active")) {
     panel.style.display = "none";
     panel.classList.remove('active');
@@ -32,10 +72,47 @@ function closePanel(panel) {
   }
 }
 
+function subMenuSelect(e) {
+  // console.log(e.currentTarget);
+  let attr = e.currentTarget.getAttribute('data-question');
+  console.log(attr);
+  let panelToOpen = document.querySelector(`#${attr}`).nextElementSibling;
+  if(!e.currentTarget.classList.contains('active')) {
+    openPanel(panelToOpen);
+  } else {
+    closePanel(panelToOpen);
+  }
+}
+subMenuItems.forEach((item) => {
+  item.addEventListener('click', subMenuSelect);
+});
+
+function openandCloseModal() {
+  //open Modal
+  document.body.style.overflow = 'hidden';
+  modalContainer.classList.add('open');
+  calcPrice();
+  // Detect clicks outside to close
+  modalContainer.addEventListener('click', function(e) {
+    //close
+    if(e.target.closest('.checkout-modal-inner') === null) {
+      closeModal();
+      document.body.style.overflow = 'auto';
+    }
+  });
+}
+
+function closeModal() { 
+  modalContainer.classList.remove('open');
+}
+
+
+
 //Open the accordian
 for(let i=0; i < accordion.length; i++) {
   accordion[i].addEventListener('click', function() {
     let panel = this.nextElementSibling;
+    // console.log(panel);
     // close the panel if it is open
     if(panel.classList.contains("active")) {
     closePanel(panel);
@@ -43,8 +120,17 @@ for(let i=0; i < accordion.length; i++) {
      else {
     openPanel(panel);
     }
-    // thing = $0.parentElement.parentElement.nextElementSibling.firstElementChild.nextElementSibling; <- get the button of the next section from in a panel. 
   });
+}
+
+function calcPrice() {
+  console.log('calculating price');
+  let valueToAccess = orderSummary.quantity;
+  let frequencyToAccess = orderSummary.frequency;
+  console.log(valueToAccess);
+  let price = pricing[valueToAccess][frequencyToAccess];
+  console.log(price.toFixed(2));
+  priceDisplay.innerText = `$${price.toFixed(2)} / mo`;
 }
 
 option.forEach((options) => {
@@ -55,7 +141,6 @@ options.addEventListener('click', function() {
   rowOptions.forEach((rowOptions) => {
     rowOptions.classList.remove('selected');
   });
-
   // Add class of selected to item in that row
   options.classList.add('selected');
   let selected = options.getAttribute('data-answer');
@@ -65,7 +150,7 @@ options.addEventListener('click', function() {
   orderSummary[dataQuestion] = selected;
   //if in the how row
   if(dataQuestion === 'how') {
-    let grindBtn = document.querySelector('#grind-btn');
+    let grindBtn = document.querySelector('#grind');
     if(orderSummary.how === 'Capsules') {
       howFragment.innerHTML = `using <span class="blue">${orderSummary.how}</span>,`;
       // disable grind option
@@ -118,11 +203,16 @@ options.addEventListener('click', function() {
     if(!currentPanel.classList.contains('last')) {
       openPanel(nextPanel);
     }
-  // console.log(this.parentElement.parentElement.nextElementSibling.firstElementChild.nextElementSibling);
-      // thing = $0.parentElement.parentElement.nextElementSibling.firstElementChild.nextElementSibling; <- get the button of the next section from in a panel. 
+
+    updateOrderSummaryModal();
 });
 });
 
+function updateOrderSummaryModal() {
+  modalOrderInner.innerHTML = orderAsText.innerHTML;
+}
+
+proceedToCheckoutBtn.addEventListener('click', openandCloseModal);
 // trigger closing of section, open next section
 // active panel
 // anchor linking

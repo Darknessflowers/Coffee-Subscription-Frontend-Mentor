@@ -99,7 +99,7 @@
       </div>
     </section>
   </div>
-  <div class="container">
+  <div class="container tablet-full-width">
     <section id="how-it-works" class="plan">
       <div id="line-with-dots">
         <div class="dot"></div>
@@ -139,17 +139,17 @@
     <div class="subscription">
       <nav class="sub-menu">
         <ul>
-          <li class="active"><span class="num">01</span> Preferences</li>
-          <li><span class="num">02</span> Bean type</li>
-          <li><span class="num">03</span> Quantity</li>
-          <li><span class="num">04</span> Grind option</li>
-          <li><span class="num">05</span> Deliveries</li>
+          <a href="#how"><li data-question="how" class="active"><span class="num">01</span> Preferences</li></a>
+          <a href="#type"><li data-question="type"><span class="num">02</span> Bean type</li></a>
+          <a href="#quantity"><li data-question="quantity"><span class="num">03</span> Quantity</li></a>
+          <a href="#grind"><li data-question="grind"><span class="num">04</span> Grind option</li></a>
+          <a href="#frequency"><li data-question="frequency"><span class="num">05</span> Deliveries</li></a>
         </ul>
       </nav>
       <div class="sub-order">
         <div class="accordian-wrap" data-question="how">
-          <button class="accordion active">How do you drink your coffee?</button>
-          <div class="panel active">
+          <button id="how" class="accordion active">How do you drink your coffee?</button>
+          <div  data-question="how" class="panel active">
             <div class="option" data-question="how" data-answer="Capsules">
               <h4>Capsule</h4>
               <p>Compatible with Nespresso systems and similar brewers</p>
@@ -166,8 +166,8 @@
         </div>
 
         <div class="accordian-wrap" data-question="type">
-        <button class="accordion">What type of coffee?</button>
-        <div class="panel">
+        <button id="type" class="accordion">What type of coffee?</button>
+        <div data-question="type" class="panel">
           <div class="option" data-question="type" data-answer="Single origin">
             <h4>Single origin</h4>
             <p>Distinct, high quality coffee from a specific family-owned farm</p>
@@ -184,8 +184,8 @@
       </div>
 
       <div class="accordian-wrap" data-question="quantity">
-        <button class="accordion">How much would you like?</button>
-        <div class="panel">
+        <button id="quantity" class="accordion">How much would you like?</button>
+        <div  data-question="quantity" class="panel">
           <div class="option" data-question="quantity" data-answer="250g">
             <h4>250g</h4>
             <p>Perfect for the solo drinker. Yields about 12 delicious cups.</p>
@@ -202,8 +202,8 @@
       </div>
 
       <div id="grind-row" class="accordian-wrap" data-question="grind">
-        <button id="grind-btn" class="accordion">Want us to grind them?</button>
-        <div class="panel">
+        <button id="grind" class="accordion">Want us to grind them?</button>
+        <div data-question="grind" class="panel">
           <div class="option" data-question="grind" data-answer="Wholebean">
             <h4>Wholebean</h4>
             <p>Best choice if you cherish the full sensory experience</p>
@@ -220,17 +220,17 @@
       </div>
 
       <div class="accordian-wrap" data-question="frequency">
-        <button class="accordion">How often should we deliver?</button>
-        <div class="panel last">
-          <div class="option" data-question="frequency" data-answer="Weekly">
+        <button id="frequency" class="accordion">How often should we deliver?</button>
+        <div data-question="frequency" class="panel last">
+          <div class="option" data-question="frequency" data-answer="Every Week">
             <h4>Every week</h4>
             <p>$14.00 per shipment. Includes free first-class shipping.</p>
             </div>
-          <div class="option" data-question="frequency" data-answer="Fortnightly">
+          <div class="option" data-question="frequency" data-answer="Every Fortnight">
             <h4>Every 2 weeks</h4>
             <p>$17.25 per shipment. Includes free priority shipping.</p>
             </div>
-          <div class="option" data-question="frequency" data-answer="Monthly">
+          <div class="option" data-question="frequency" data-answer="Every Month">
             <h4>Every month</h4>
             <p>$22.50 per shipment. Includes free priority shipping.</p>
             </div>
@@ -239,8 +239,10 @@
 
       <div id="order-summary">
         <h4>Order Summary</h4>
-        <p class="order-text">"I drink my coffee <span class="how-fragment"><span class="blue">_____</span>,</span> with a <span class="blue type-fragment">_____</span> type of bean. <span class="blue quantity-fragment">_____</span><span class="grind-fragment"></span>, sent to me <span class="blue frequency-fragment">_____</span>."</p>
+        <p class="order-text">&#8220; I drink my coffee <span class="how-fragment"><span class="blue">_____</span>,</span> with a <span class="blue type-fragment">_____</span> type of bean. <span class="blue quantity-fragment">_____</span><span class="grind-fragment"></span>, sent to me <span class="blue frequency-fragment">_____</span>.&#8221;</p>
       </div>
+
+      <button class="proceed-to-checkout">Create my plan!</button>
       </div>
 
       
@@ -267,6 +269,24 @@
   </footer>
   </div>
 
+  <div class="checkout-modal-outer">
+    <div class="checkout-modal-inner">
+      <h2>Order Summary</h2>
+
+      <div class="checkout-padding">
+      <div class="order"></div>
+
+      <p>Is this correct? You can proceed to checkout or go back to plan selection if something is off. Subscription discount codes can also be redeemed at the checkout.</p>
+      
+      <div class="row">
+        <span class="price"></span> 
+        <button class="" disabled>Checkout</button>
+      </div>
+      
+      </div>
+      
+    </div>
+  </div>
   <script src="./index.js"></script>
   <script src="./plan.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

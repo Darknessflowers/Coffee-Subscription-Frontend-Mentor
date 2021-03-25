@@ -63,7 +63,8 @@ button {
   border: none;
   font-size: 18px;
   font-family: "Fraunces", serif;
-  padding: 21px 80px;
+  // padding: 21px 80px;
+  padding: 15px 35px;
   border-radius: 6px;
   cursor: pointer;
 
@@ -149,6 +150,7 @@ footer {
   flex-wrap: wrap;
   align-items: center;
   margin-bottom: 88px;
+  margin-top: 56px;
 
   .logo {
     margin-right: 100px;
@@ -220,9 +222,13 @@ footer {
   }
 }
 @media only screen and (max-width: 1029px) {
-  button {
-    padding: 21px 30px;
+  h1 {
+    font-size: 32px;
+    line-height: 40px;
   }
+  // button {
+  //   padding: 21px 30px;
+  // }
 
   footer {
     display: grid;
@@ -243,9 +249,36 @@ footer {
       margin-top: 33px;
     }
   }
+
+  #plan-hero,
+  #about-hero {
+    h1 {
+      margin-bottom: 25px;
+    }
+    .caption {
+      padding-left: 84px;
+      max-width: calc(398px + 84px);
+      font-size: 15px;
+      line-height: 25px;
+    }
+  }
 }
 
 @media only screen and (max-width: 705px) {
+  body {
+    font-size: 15px;
+    line-height: 25px;
+  }
+  h1 {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  h2 {
+    font-size: 32px;
+    line-height: 48px;
+  }
+
   .container {
     padding: 0 23px;
   }
@@ -275,6 +308,38 @@ footer {
         line-height: 32px;
         text-transform: none;
       }
+    }
+  }
+
+  footer {
+    nav {
+      ul {
+        justify-content: center;
+      }
+    }
+
+    .social {
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+      svg {
+        margin-left: 0;
+      }
+    }
+  }
+
+  #plan-hero,
+  #about-hero {
+    margin-bottom: 121px;
+    .caption {
+      padding-left: 23px;
+      padding-right: 23px;
+      max-width: unset;
+      text-align: center;
+    }
+    p {
+      font-size: 15px;
+      line-height: 25px;
     }
   }
 }
