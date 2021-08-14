@@ -103,6 +103,9 @@ footer {
 }
 
 header {
+  .logo {
+    max-height: 27px;
+  }
   &.activated {
     height: 100vh;
     position: fixed;
@@ -127,8 +130,8 @@ header {
   .container {
     display: flex;
     justify-content: space-between;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 43px;
+    padding-bottom: 43px;
     flex-wrap: wrap;
     align-items: center;
   }
