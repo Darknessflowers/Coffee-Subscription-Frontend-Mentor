@@ -33,7 +33,6 @@
 
   li {
     padding: 30px 0;
-    border-bottom: 1px solid adjust-color($grey, $alpha: -0.75);
     font-weight: 800;
     font-size: 24px;
     color: adjust-color($dark-grey-blue, $alpha: -0.6);
@@ -49,11 +48,15 @@
     }
   }
 
-  li:first-child {
+  a {
+    border-bottom: 1px solid adjust-color($grey, $alpha: -0.75);
+  }
+
+  a:first-child li {
     padding-top: 0;
   }
 
-  li:last-child {
+  a:last-child li {
     border-bottom: none;
   }
 
@@ -73,6 +76,10 @@
   .disabledsub {
     cursor: not-allowed;
     pointer-events: none;
+
+    li {
+      opacity: 0.22;
+    }
   }
 }
 
@@ -173,7 +180,7 @@
 }
 
 #order-summary {
-  background: #22262a;
+  background: #2C343E;
   border-radius: 10px;
   margin-bottom: 40px;
   padding: 50px 64px;

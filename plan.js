@@ -73,9 +73,7 @@ function closePanel(panel) {
 }
 
 function subMenuSelect(e) {
-  // console.log(e.currentTarget);
   let attr = e.currentTarget.getAttribute('data-question');
-  console.log(attr);
   let panelToOpen = document.querySelector(`#${attr}`).nextElementSibling;
   if(!e.currentTarget.classList.contains('active')) {
     openPanel(panelToOpen);
@@ -215,7 +213,6 @@ options.addEventListener('click', function() {
   // console.log(nextPanel);
   // if the next panel is disabled skip it
   if(nextPanel.classList.contains('disabled')) {
-    console.log("uh oh");
     nextPanel = this.closest('.accordian-wrap').nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling;
   } 
   // if every other question is done and capsule is changed to a different answer open grind
@@ -228,7 +225,6 @@ options.addEventListener('click', function() {
     }
 
     updateOrderSummaryModal();
-    console.log(Object.entries(orderSummary).length);
     // if every option is selected enable create plan
     if(Object.entries(orderSummary).length == 5) {
       //enable create plan button
