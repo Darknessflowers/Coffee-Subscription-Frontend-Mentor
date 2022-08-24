@@ -40,7 +40,7 @@ const modalOrderInner = document.querySelector('.order');
 const orderAsText = document.querySelector('.order-text');
 const priceDisplay = document.querySelector('.checkout-modal-inner .price');
 const proceedToCheckoutBtn = document.querySelector('.proceed-to-checkout');
-let grindMenu = document.querySelector('.sub-menu [data-question="grind"]').parentElement;
+let grindMenu = document.querySelector('.sub-menu [data-question="grind"] a');
 let optionsSelected =0;
 
 function openPanel(panel) {
