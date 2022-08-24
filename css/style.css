@@ -481,11 +481,11 @@
   cursor: pointer;
 }
 
-.sub-menu li.active {
+.sub-menu li.active, .sub-menu li:hover {
   color: #333d4b;
 }
 
-.sub-menu li.active.num {
+.sub-menu li.active .num, .sub-menu li:hover .num {
   color: #0e8784;
 }
 
@@ -521,7 +521,8 @@
 .accordion {
   width: 100%;
   text-align: left;
-  padding: 0 0 21px 0;
+  padding: 0;
+  margin-bottom: 21px;
   border-radius: 0;
   font-size: 40px;
   background: transparent;
@@ -535,9 +536,13 @@
   color: #83888f;
 }
 
+.accordion:hover::after {
+  content: url("data:image/svg+xml,%3Csvg width='19' height='13' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.949.586l2.828 2.828-9.096 9.096L.586 3.414 3.414.586l6.267 6.267z' fill='%2366D2CF' fill-rule='nonzero'/%3E%3C/svg%3E");
+}
+
 .accordion::after {
-  content: url("../assets/plan/desktop/icon-arrow.svg");
-  display: block;
+  content: url("data:image/svg+xml,%3Csvg width='19' height='13' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.949.586l2.828 2.828-9.096 9.096L.586 3.414 3.414.586l6.267 6.267z' fill='%230E8784' fill-rule='nonzero'/%3E%3C/svg%3E");
+  display: flex;
   width: 18px;
   height: 12px;
   margin-left: auto;
@@ -549,6 +554,7 @@
 
 .accordion.disabled {
   cursor: not-allowed;
+  opacity: 50%;
 }
 
 .panel {
@@ -556,6 +562,7 @@
   grid-gap: 23px;
   display: none;
   overflow: hidden;
+  scroll-margin-top: 100px;
 }
 
 .panel.active {
@@ -690,6 +697,7 @@
 
 .sub-order button {
   margin-left: auto;
+  scroll-margin-top: 30px;
 }
 
 @media only screen and (max-width: 1029px) {
@@ -766,6 +774,10 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {

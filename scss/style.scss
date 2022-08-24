@@ -9,6 +9,10 @@
   margin: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: $font-paragraph;
   font-weight: 400;
@@ -86,6 +90,7 @@ footer {
       display: flex;
       flex-wrap: wrap;
     }
+
     a {
       text-transform: uppercase;
       text-decoration: none;
@@ -106,6 +111,7 @@ header {
   .logo {
     max-height: 27px;
   }
+
   &.activated {
     height: 100vh;
     position: fixed;
@@ -113,6 +119,7 @@ header {
     // padding: 0 23px;
     left: 0;
   }
+
   .menu-toggle {
     background: transparent;
     padding: 10px;
@@ -135,6 +142,7 @@ header {
     flex-wrap: wrap;
     align-items: center;
   }
+
   nav {
     li {
       padding-left: 30px;
@@ -219,16 +227,19 @@ footer {
     max-width: calc(495px + 84px);
   }
 }
+
 @media only screen and (max-width: 1280px) {
   .container {
     padding: 0 40px;
   }
 }
+
 @media only screen and (max-width: 1029px) {
   h1 {
     font-size: 32px;
     line-height: 40px;
   }
+
   // button {
   //   padding: 21px 30px;
   // }
@@ -258,6 +269,7 @@ footer {
     h1 {
       margin-bottom: 25px;
     }
+
     .caption {
       padding-left: 84px;
       max-width: calc(398px + 84px);
@@ -272,6 +284,7 @@ footer {
     font-size: 15px;
     line-height: 25px;
   }
+
   h1 {
     font-size: 40px;
     line-height: 40px;
@@ -293,6 +306,7 @@ footer {
 
     nav {
       display: none;
+
       &.activated {
         display: block;
         margin-top: 88px;
@@ -325,6 +339,7 @@ footer {
       width: 100%;
       display: flex;
       justify-content: space-evenly;
+
       svg {
         margin-left: 0;
       }
@@ -334,12 +349,14 @@ footer {
   #plan-hero,
   #about-hero {
     margin-bottom: 121px;
+
     .caption {
       padding-left: 23px;
       padding-right: 23px;
       max-width: unset;
       text-align: center;
     }
+
     p {
       font-size: 15px;
       line-height: 25px;

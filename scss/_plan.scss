@@ -38,13 +38,14 @@
     font-size: 24px;
     color: adjust-color($dark-grey-blue, $alpha: -0.6);
     cursor: pointer;
-  }
 
-  li.active {
-    color: $dark-grey-blue;
+    &.active,
+    &:hover {
+      color: $dark-grey-blue;
 
-    &.num {
-      color: $dark-cyan;
+      .num {
+        color: $dark-cyan;
+      }
     }
   }
 
@@ -81,22 +82,29 @@
 .accordion {
   width: 100%;
   text-align: left;
-  padding: 0 0 21px 0;
+  padding: 0;
+  margin-bottom: 21px;
   border-radius: 0;
   font-size: 40px;
   background: transparent;
   color: $grey;
   display: flex;
   align-items: center;
+
   &:hover {
     background: transparent;
     color: $grey;
+
+    &::after {
+      content: url("data:image/svg+xml,%3Csvg width='19' height='13' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.949.586l2.828 2.828-9.096 9.096L.586 3.414 3.414.586l6.267 6.267z' fill='%2366D2CF' fill-rule='nonzero'/%3E%3C/svg%3E");
+    }
   }
 
   &::after {
-    content: url("../assets/plan/desktop/icon-arrow.svg");
+    // content: url("../assets/plan/desktop/icon-arrow.svg");
+    content: url("data:image/svg+xml,%3Csvg width='19' height='13' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.949.586l2.828 2.828-9.096 9.096L.586 3.414 3.414.586l6.267 6.267z' fill='%230E8784' fill-rule='nonzero'/%3E%3C/svg%3E");
     // background: url("../assets/plan/desktop/icon-arrow.svg");
-    display: block;
+    display: flex;
     width: 18px;
     height: 12px;
     margin-left: auto;
@@ -108,6 +116,7 @@
 
   &.disabled {
     cursor: not-allowed;
+    opacity: 50%;
   }
 }
 
@@ -116,6 +125,7 @@
   grid-gap: 23px;
   display: none;
   overflow: hidden;
+  scroll-margin-top: 100px;
 
   &.active {
     display: grid;
@@ -135,6 +145,7 @@
 
   &.selected {
     background: $dark-cyan;
+
     h4,
     p {
       color: $light-cream-bg;
@@ -245,9 +256,10 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+
   button {
-    // padding: 15px 35px;
     margin-left: auto;
+    scroll-margin-top: 30px;
   }
 }
 
@@ -263,6 +275,7 @@
 
   .subscription {
     grid-template-columns: 1fr;
+
     .sub-menu {
       display: none;
     }
@@ -313,14 +326,17 @@
   #order-summary {
     padding: 35px 24px;
   }
+
   .checkout-modal-outer {
     place-items: center;
+
     h2 {
       font-size: 28px;
       line-height: 32px;
       padding: 28px 24px 28px 24px;
     }
   }
+
   .checkout-modal-inner {
     max-width: 90%;
 
@@ -328,6 +344,7 @@
       margin-bottom: 14px;
     }
   }
+
   .sub-order button {
     margin: 0 auto;
   }

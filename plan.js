@@ -50,7 +50,7 @@ function openPanel(panel) {
       return;
     }
   });
-  if(!panel.classList.contains("disabled")) {
+  if(!panel.classList.contains("disabled") && panel.classList.contains("panel")) {
     // otherwise open it
     panel.style.display = "grid";
     panel.classList.add('active');
@@ -199,9 +199,15 @@ options.addEventListener('click', function() {
 
   // move up from the button then navigate to the next panel
   let nextPanel = this.closest('.accordian-wrap').nextElementSibling.firstElementChild.nextElementSibling;
-    // open next panel
-    if(!currentPanel.classList.contains('last')) {
-      openPanel(nextPanel);
+  console.log(nextPanel);
+  // if the next panel is disabled skip it
+  if(nextPanel.classList.contains('disabled')) {
+    console.log("uh oh");
+    nextPanel = this.closest('.accordian-wrap').nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling;
+  }
+    openPanel(nextPanel);
+    if(nextPanel.classList.contains("panel")) {
+    nextPanel.scrollIntoView({behavior: "smooth", block: "start", inline: "start"});
     }
 
     updateOrderSummaryModal();
@@ -225,4 +231,7 @@ proceedToCheckoutBtn.addEventListener('click', openandCloseModal);
 // if option is selected add selected class
 // add to object that tracks order
 
-// if a panel is disabled don't let it be opened
+// skip disabled panel, and open next one
+// scroll to next panel - Element.scrollIntoView()
+// checkout button enables if options are selected and there is a price
+// hover effect on sidebar
