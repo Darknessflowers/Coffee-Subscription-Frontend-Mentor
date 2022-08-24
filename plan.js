@@ -24,8 +24,6 @@ let pricing = {
   },
 };
 
-// calculations
-// disable menu item if panel is disabled
 // mobile adjustment for checkout popup
 
 const accordion = document.querySelectorAll('.accordion');
@@ -42,6 +40,8 @@ const modalOrderInner = document.querySelector('.order');
 const orderAsText = document.querySelector('.order-text');
 const priceDisplay = document.querySelector('.checkout-modal-inner .price');
 const proceedToCheckoutBtn = document.querySelector('.proceed-to-checkout');
+let grindMenu = document.querySelector('.sub-menu [data-question="grind"]').parentElement;
+let optionsSelected =0;
 
 function openPanel(panel) {
   subMenuItems.forEach((item) => {
@@ -107,7 +107,6 @@ function closeModal() {
 }
 
 
-
 //Open the accordian
 for(let i=0; i < accordion.length; i++) {
   accordion[i].addEventListener('click', function() {
@@ -131,6 +130,9 @@ function calcPrice() {
   let price = pricing[valueToAccess][frequencyToAccess];
   console.log(price.toFixed(2));
   priceDisplay.innerText = `$${price.toFixed(2)} / mo`;
+  if(price > 0) {
+    return true;
+  }
 }
 
 option.forEach((options) => {
@@ -143,6 +145,7 @@ options.addEventListener('click', function() {
   });
   // Add class of selected to item in that row
   options.classList.add('selected');
+  // console.log(optionsSelected);
   let selected = options.getAttribute('data-answer');
   // First, get the data-question
   let dataQuestion = options.getAttribute('data-question');
@@ -153,14 +156,21 @@ options.addEventListener('click', function() {
     let grindBtn = document.querySelector('#grind');
     if(orderSummary.how === 'Capsules') {
       howFragment.innerHTML = `using <span class="blue">${orderSummary.how}</span>,`;
+      // add grind to order summary still but as null
+      orderSummary.grind = null;
+
       // disable grind option
       if(!grindBtn.classList.contains('disabled')) {
         grindBtn.classList.add('disabled');
         grindBtn.nextElementSibling.classList.add('disabled');
+        //add disabled class to sub-menu 
+        grindMenu.classList.add('disabledsub');
+        // console.log(grindMenu);
+        //close panel
         closePanel(grindBtn.nextElementSibling);
       }
       //reset grind option
-      delete orderSummary.grind;
+      // delete orderSummary.grind;
       grindFragment.innerHTML = ``;
       let grindRow = document.querySelector('#grind-row');
       let grindOptions = grindRow.querySelectorAll('.option');
@@ -177,6 +187,9 @@ options.addEventListener('click', function() {
         grindBtn.classList.remove('disabled');
         grindBtn.nextElementSibling.classList.remove('disabled');
       }
+      if(grindMenu.classList.contains('disabledsub')) {
+        grindMenu.classList.remove('disabledsub');
+      }  
     }
   } else if(dataQuestion === 'type') {
     typeFragment.innerHTML = orderSummary.type;
@@ -199,11 +212,15 @@ options.addEventListener('click', function() {
 
   // move up from the button then navigate to the next panel
   let nextPanel = this.closest('.accordian-wrap').nextElementSibling.firstElementChild.nextElementSibling;
-  console.log(nextPanel);
+  // console.log(nextPanel);
   // if the next panel is disabled skip it
   if(nextPanel.classList.contains('disabled')) {
     console.log("uh oh");
     nextPanel = this.closest('.accordian-wrap').nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling;
+  } 
+  // if every other question is done and capsule is changed to a different answer open grind
+  if(Object.entries(orderSummary).length >= 4 && orderSummary.how !== "Capsules") {
+    nextPanel = document.querySelector(`#grind`).nextElementSibling;
   }
     openPanel(nextPanel);
     if(nextPanel.classList.contains("panel")) {
@@ -211,6 +228,18 @@ options.addEventListener('click', function() {
     }
 
     updateOrderSummaryModal();
+    console.log(Object.entries(orderSummary).length);
+    // if every option is selected enable create plan
+    if(Object.entries(orderSummary).length == 5) {
+      //enable create plan button
+      let createPlanBtn = document.querySelector('.proceed-to-checkout');
+      // if how is not set to capsule then only enable if grind isn't false
+      if(orderSummary.how !== "Capsules" && orderSummary.grind === null) {
+        createPlanBtn.disabled = true;
+      } else {
+        createPlanBtn.disabled = false;
+      }
+    }
 });
 });
 
