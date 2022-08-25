@@ -203,33 +203,27 @@
     font-size: 48px;
     line-height: 48px;
   }
-
   #home-hero p {
     font-size: 15px;
     line-height: 25px;
   }
-
   #home-hero .caption {
     padding-left: 60px;
     display: flex;
     flex-direction: column;
     align-items: start;
   }
-
   #our-collection h2 {
     font-size: 96px;
     line-height: 96px;
   }
-
   #our-collection .coffeewrap {
     grid-template-columns: 1fr;
   }
-
   #our-collection .choose-bg {
     padding: 66px 0 294px 0;
     min-height: 573px;
   }
-
   #why-choose-us #choose-boxes {
     margin-top: -280px;
     margin-bottom: 200px;
@@ -238,7 +232,6 @@
     margin-right: 60px;
     grid-template-columns: 1fr;
   }
-
   #why-choose-us #choose-boxes .box {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -246,15 +239,12 @@
     padding: 45px 70px 40px 70px;
     place-items: center;
   }
-
   #why-choose-us #choose-boxes .box img {
     margin-bottom: 0;
   }
-
   #why-choose-us #choose-boxes .box .content-box {
     text-align: left;
   }
-
   #how-it-works,
   #line-with-dots {
     grid-gap: 21px;
@@ -265,40 +255,32 @@
   #how-it-works {
     grid-template-columns: 1fr;
   }
-
   #line-with-dots {
     display: none;
   }
-
   #why-choose-us .choose-bg {
     padding: 66px 25px 294px 25px;
     min-height: 900px;
   }
-
   #why-choose-us #choose-boxes {
     margin-top: -569px;
     max-width: none;
     margin-left: 25px;
     margin-right: 25px;
   }
-
   #why-choose-us #choose-boxes .box {
     grid-template-columns: 1fr;
     padding: 66px 35px 48px 35px;
   }
-
   #why-choose-us #choose-boxes .box .content-box {
     text-align: center;
   }
-
   #our-collection {
     padding-top: 140px;
   }
-
   #our-collection .container {
     padding: 0;
   }
-
   #our-collection h2 {
     font-size: 40px;
     line-height: 72px;
@@ -306,24 +288,20 @@
     transform: unset;
     margin-bottom: 0;
   }
-
   #our-collection .coffee h3 {
     margin-bottom: 12px;
   }
-
   #home-hero h1 {
     margin-bottom: 27px;
     font-size: 40px;
     line-height: 40px;
     text-align: center;
   }
-
   #home-hero p {
     font-size: 15px;
     line-height: 25px;
     text-align: center;
   }
-
   #home-hero .caption {
     max-width: unset;
     display: flex;
@@ -405,24 +383,20 @@
     grid-column-gap: 69px;
     padding: 0px;
   }
-
   #uncompromising-quality {
     padding: 0px;
     grid-template-columns: 1fr;
   }
-
   #uncompromising-quality #quality-image {
     order: -1;
     display: flex;
     justify-content: center;
   }
-
   #uncompromising-quality #quality-image img {
     transform: translateY(-160px);
     margin-bottom: -85px;
     order: -1;
   }
-
   #uncompromising-quality #quality-text {
     padding: 0 55px;
     margin: 0 auto;
@@ -437,30 +411,24 @@
     grid-row-gap: 40px;
     text-align: center;
   }
-
   #commitment-img {
     display: flex;
     justify-content: center;
   }
-
   #uncompromising-quality {
     padding-top: 82px;
   }
-
   #uncompromising-quality h2 {
     font-size: 28px;
     line-height: 28px;
   }
-
   #uncompromising-quality #quality-text {
     padding: 0 23px;
   }
-
   #uncompromising-quality #quality-image {
     max-width: 85%;
     margin: 0 auto;
   }
-
   #headquarters {
     grid-template-columns: 1fr;
     grid-row-gap: 70px;
@@ -468,7 +436,6 @@
     margin-bottom: 112px;
     text-align: center;
   }
-
   #headquarters h3 {
     font-size: 28px;
     line-height: 36px;
@@ -519,15 +486,13 @@
   color: rgba(51, 61, 75, 0.4);
 }
 
-.sub-menu li.active,
-.sub-menu li:hover,
+.sub-menu li.active, .sub-menu li:hover,
 .sub-menu li.active a,
 .sub-menu li:hover a {
   color: #333d4b;
 }
 
-.sub-menu li.active .num,
-.sub-menu li:hover .num,
+.sub-menu li.active .num, .sub-menu li:hover .num,
 .sub-menu li.active a .num,
 .sub-menu li:hover a .num {
   color: #0e8784;
@@ -763,15 +728,12 @@
     max-width: none;
     padding: 0;
   }
-
   #how-it-works.plan {
     padding: 95px 40px;
   }
-
   .subscription {
     grid-template-columns: 1fr;
   }
-
   .subscription .sub-menu {
     display: none;
   }
@@ -782,72 +744,56 @@
     font-size: 40px;
     line-height: 40px;
   }
-
   h3 {
     font-size: 28px;
     line-height: 32px;
   }
-
   .panel {
     grid-template-columns: 1fr;
   }
-
   .option {
     padding: 30px 25px;
   }
-
   .option h4 {
     margin-bottom: 14px;
   }
-
   #how-it-works.plan {
     text-align: center;
     grid-row-gap: 65px;
   }
-
   #how-it-works.plan .how-box h3 {
     padding-right: 0;
   }
-
   .accordion {
     font-size: 24px;
     line-height: 32px;
   }
-
   .accordion-wrap {
     margin-bottom: 95px;
   }
-
   #order-summary {
     padding: 35px 24px;
   }
-
   .checkout-modal-outer {
     place-items: center;
   }
-
   .checkout-modal-outer h2 {
     font-size: 28px;
     line-height: 32px;
     padding: 28px 24px 28px 24px;
   }
-
   .checkout-modal-inner {
     max-width: 90%;
   }
-
   .checkout-modal-inner .order {
     margin-bottom: 14px;
   }
-
   .checkout-modal-inner .checkout-padding {
     padding: 36px 24px 24px 24px;
   }
-
   .sub-order button {
     margin: 0 auto 30px;
   }
-
   .accordion::after {
     margin-left: 30px;
   }
@@ -1096,32 +1042,26 @@ footer .social-img:hover path {
     font-size: 32px;
     line-height: 40px;
   }
-
   footer {
     display: grid;
     grid-template-columns: 1fr;
     place-items: center;
     grid-row-gap: 33px;
   }
-
   footer .logo {
     margin-right: 0;
   }
-
   footer nav a {
     margin: 0 32px;
   }
-
   footer .social {
     margin-left: unset;
     margin-top: 33px;
   }
-
   #plan-hero h1,
   #about-hero h1 {
     margin-bottom: 25px;
   }
-
   #plan-hero .caption,
   #about-hero .caption {
     padding-left: 84px;
@@ -1136,41 +1076,33 @@ footer .social-img:hover path {
     font-size: 15px;
     line-height: 25px;
   }
-
   h1 {
     font-size: 40px;
     line-height: 40px;
   }
-
   h2 {
     font-size: 32px;
     line-height: 48px;
   }
-
   .container {
     padding: 0 23px;
   }
-
   header .menu-toggle {
     display: block;
   }
-
   header nav {
     display: none;
   }
-
   header nav.activated {
     display: block;
     margin-top: 88px;
   }
-
   header nav li {
     width: 100%;
     text-align: center;
     margin-bottom: 45px;
     padding-left: 0;
   }
-
   header nav a {
     font-family: "Fraunces", serif;
     color: #333d4b;
@@ -1178,41 +1110,33 @@ footer .social-img:hover path {
     line-height: 32px;
     text-transform: none;
   }
-
   footer {
     grid-row-gap: 45px;
   }
-
   footer nav ul {
     justify-content: center;
     flex-direction: column;
     align-items: center;
   }
-
   footer nav li {
     margin-right: 0;
   }
-
   footer nav a {
     margin: 0;
   }
-
   footer .social {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
     margin-top: 0;
   }
-
   footer .social svg {
     margin-left: 0;
   }
-
   #plan-hero,
   #about-hero {
     margin-bottom: 121px;
   }
-
   #plan-hero .caption,
   #about-hero .caption {
     padding-left: 23px;
@@ -1220,7 +1144,6 @@ footer .social-img:hover path {
     max-width: unset;
     text-align: center;
   }
-
   #plan-hero p,
   #about-hero p {
     font-size: 15px;
