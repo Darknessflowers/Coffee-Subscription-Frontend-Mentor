@@ -29,7 +29,7 @@
   max-width: 100%;
 }
 
-#home-hero button {
+#home-hero .button {
   margin-top: 40px;
 }
 
@@ -858,7 +858,8 @@ h4 {
   margin: 0 auto;
 }
 
-button {
+button,
+.button {
   background: #0e8784;
   color: #fefcf7;
   border: none;
@@ -867,13 +868,17 @@ button {
   padding: 15px 35px;
   border-radius: 6px;
   cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
 }
 
-button:hover {
+button:hover,
+.button:hover {
   background: #66d2cf;
 }
 
-button:disabled {
+button:disabled,
+.button:disabled {
   background: #e2dedb;
   cursor: disabled;
 }
