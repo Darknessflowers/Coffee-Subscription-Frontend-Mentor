@@ -42,7 +42,7 @@
 }
 
 #our-collection {
-  padding: 152px 0 234px 0;
+  padding: 152px 0 204px 0;
 }
 
 #our-collection h2 {
@@ -77,6 +77,7 @@
 
 #our-collection .coffee img {
   max-width: 255px;
+  margin-bottom: 78px;
 }
 
 #our-collection .coffee h3 {
