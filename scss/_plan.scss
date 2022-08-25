@@ -178,7 +178,7 @@
   }
 }
 
-.accordian-wrap {
+.accordion-wrap {
   margin-bottom: 100px;
 }
 
@@ -337,10 +337,10 @@
 
   .accordion {
     font-size: 24px;
-    line-height: 28px;
+    line-height: 32px;
   }
 
-  .accordian-wrap {
+  .accordion-wrap {
     margin-bottom: 95px;
   }
 
@@ -364,9 +364,17 @@
     .order {
       margin-bottom: 14px;
     }
+
+    .checkout-padding {
+      padding: 36px 24px 24px 24px;
+    }
   }
 
   .sub-order button {
-    margin: 0 auto;
+    margin: 0 auto 30px;
+  }
+
+  .accordion::after {
+    margin-left: 30px;
   }
 }

@@ -24,8 +24,6 @@ let pricing = {
   },
 };
 
-// mobile adjustment for checkout popup
-
 const accordion = document.querySelectorAll('.accordion');
 const option = document.querySelectorAll('.option');
 const howFragment = document.querySelector('.how-fragment');
@@ -40,8 +38,11 @@ const modalOrderInner = document.querySelector('.order');
 const orderAsText = document.querySelector('.order-text');
 const priceDisplay = document.querySelector('.checkout-modal-inner .price');
 const proceedToCheckoutBtn = document.querySelector('.proceed-to-checkout');
-let grindMenu = document.querySelector('.sub-menu [data-question="grind"] a');
-let optionsSelected =0;
+const checkoutBtn = document.querySelector('.checkout');
+const grindMenu = document.querySelector('.sub-menu [data-question="grind"] a');
+let nextPanel;
+let totalPrice = 0;
+const mobileMediaQuery = window.matchMedia("(max-width: 705px)")
 
 function openPanel(panel) {
   subMenuItems.forEach((item) => {
@@ -87,9 +88,19 @@ subMenuItems.forEach((item) => {
 
 function openandCloseModal() {
   //open Modal
+  calcPrice();
   document.body.style.overflow = 'hidden';
   modalContainer.classList.add('open');
-  calcPrice();
+  // change checkout button text based on device size
+  if(mobileMediaQuery.matches) {
+    checkoutBtn.innerText = `Checkout - $${totalPrice} / mo`;
+    document.querySelector('.checkout-modal-inner .price').style.display = "none";
+  } else {
+    checkoutBtn.innerText = 'Checkout';
+    document.querySelector('.checkout-modal-inner .price').style.display = "block";
+  }
+  
+
   // Detect clicks outside to close
   modalContainer.addEventListener('click', function(e) {
     //close
@@ -105,11 +116,10 @@ function closeModal() {
 }
 
 
-//Open the accordian
+//Open the accordion
 for(let i=0; i < accordion.length; i++) {
   accordion[i].addEventListener('click', function() {
     let panel = this.nextElementSibling;
-    // console.log(panel);
     // close the panel if it is open
     if(panel.classList.contains("active")) {
     closePanel(panel);
@@ -121,12 +131,10 @@ for(let i=0; i < accordion.length; i++) {
 }
 
 function calcPrice() {
-  console.log('calculating price');
   let valueToAccess = orderSummary.quantity;
   let frequencyToAccess = orderSummary.frequency;
-  console.log(valueToAccess);
   let price = pricing[valueToAccess][frequencyToAccess];
-  console.log(price.toFixed(2));
+  totalPrice = price.toFixed(2);
   priceDisplay.innerText = `$${price.toFixed(2)} / mo`;
   if(price > 0) {
     return true;
@@ -136,6 +144,7 @@ function calcPrice() {
 option.forEach((options) => {
   //Add event listener to all options
 options.addEventListener('click', function() {
+  // debugger;
   //Remove class of selected from others in row
   let rowOptions = options.parentElement.querySelectorAll('.option');
   rowOptions.forEach((rowOptions) => {
@@ -143,7 +152,6 @@ options.addEventListener('click', function() {
   });
   // Add class of selected to item in that row
   options.classList.add('selected');
-  // console.log(optionsSelected);
   let selected = options.getAttribute('data-answer');
   // First, get the data-question
   let dataQuestion = options.getAttribute('data-question');
@@ -163,7 +171,6 @@ options.addEventListener('click', function() {
         grindBtn.nextElementSibling.classList.add('disabled');
         //add disabled class to sub-menu 
         grindMenu.classList.add('disabledsub');
-        // console.log(grindMenu);
         //close panel
         closePanel(grindBtn.nextElementSibling);
       }
@@ -206,19 +213,14 @@ options.addEventListener('click', function() {
   }
   // close panel that was just selected from
   let currentPanel = this.closest('.panel'); 
-  // closePanel(currentPanel);
+  closePanel(currentPanel);
 
   // move up from the button then navigate to the next panel
-  let nextPanel = this.closest('.accordian-wrap').nextElementSibling.firstElementChild.nextElementSibling;
-  // console.log(nextPanel);
+  nextPanel = this.closest('.accordion-wrap').nextElementSibling.firstElementChild.nextElementSibling;
   // if the next panel is disabled skip it
   if(nextPanel.classList.contains('disabled')) {
-    nextPanel = this.closest('.accordian-wrap').nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling;
+    nextPanel = this.closest('.accordion-wrap').nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling;
   } 
-  // if every other question is done and capsule is changed to a different answer open grind
-  if(Object.entries(orderSummary).length >= 4 && orderSummary.how !== "Capsules") {
-    nextPanel = document.querySelector(`#grind`).nextElementSibling;
-  }
     openPanel(nextPanel);
     if(nextPanel.classList.contains("panel")) {
     nextPanel.scrollIntoView({behavior: "smooth", block: "start", inline: "start"});
