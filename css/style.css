@@ -292,6 +292,9 @@
   #our-collection .coffee h3 {
     margin-bottom: 12px;
   }
+  #our-collection .coffee img {
+    margin-bottom: 34px;
+  }
   #home-hero h1 {
     margin-bottom: 27px;
     font-size: 40px;
